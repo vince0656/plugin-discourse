@@ -1,6 +1,6 @@
 {
     "name": "@vdecentralised/plugin-discourse",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "type": "module",
     "main": "dist/index.js",
     "module": "dist/index.js",
@@ -29,5 +29,8 @@
     "scripts": {
         "build": "tsup --format esm --dts",
         "test": "vitest run"
+    },
+    "devDependencies": {
+        "typescript": "^5.7.3"
     }
 }
