@@ -19,7 +19,7 @@ const discoursePostsProvider: Provider = {
             const posts = await client.getLatestPosts(config.DISCOURSE_POSTS_LIMIT ?? 5);
 
             // Log the number of posts found
-            elizaLogger.info(`Found ${posts.length} posts from ${config.DISCOURSE_INSTANCE_URL}`);
+            elizaLogger.info(`Found ${posts.length} posts from ${config.DISCOURSE_INSTANCE_URL} discourse instance`);
 
             // Return the formatted post data as a string
             return client.formatLatestPostsData(posts);
