@@ -23,7 +23,8 @@
         "axios": "1.7.9",
         "node-cache": "5.1.2",
         "tsup": "8.3.5",
-        "vitest": "2.1.4"
+        "vitest": "2.1.4",
+        "zod": "^3.24.2"
     },
     "scripts": {
         "build": "tsup --format esm --dts",
