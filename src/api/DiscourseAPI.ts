@@ -15,7 +15,13 @@ export class DiscourseAPI {
         this.instance = axios.create({ baseURL: trimmedInstanceUrl });
     }
 
-    async getLatestPosts(): Promise<Post[]> {
+    /**
+     * Fetches the latest posts from the Discourse instance
+     * @param limit Optional maximum number of posts to return
+     * @returns Array of Post objects containing the latest posts
+     * @throws Error if no posts are found or if the API request fails
+     */
+    async getLatestPosts(limit?: number): Promise<Post[]> {
         const response = await this.instance.get("/posts", {
             headers: {
                 accept: "application/json",
@@ -32,9 +38,19 @@ export class DiscourseAPI {
             throw new Error("No post data found");
         }
 
-        return posts.latest_posts as Post[];
+        if (limit && posts.latest_posts.length > limit) {
+            return posts.latest_posts.slice(0, limit);
+        }
+
+        return posts.latest_posts;
     }
 
+    /**
+     * Formats an array of Discourse posts into a readable string format
+     * @param posts Array of Post objects to format
+     * @returns Formatted string containing post details
+     * @throws Error if posts array is invalid, empty or contains invalid post objects
+     */
     formatLatestPostsData(posts: Post[]): string {
         if (!Array.isArray(posts)) {
             throw new Error('Posts must be an array');

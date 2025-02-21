@@ -16,8 +16,9 @@ const discoursePostsProvider: Provider = {
             const client = new DiscourseAPI(config.DISCOURSE_INSTANCE_URL);
 
             // Make the API call to get the latest posts
-            const posts = await client.getLatestPosts();
+            const posts = await client.getLatestPosts(config.DISCOURSE_POSTS_LIMIT ?? 5);
 
+            // Log the number of posts found
             elizaLogger.info(`Found ${posts.length} posts from ${config.DISCOURSE_INSTANCE_URL}`);
 
             // Return the formatted post data as a string

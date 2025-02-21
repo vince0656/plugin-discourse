@@ -5,6 +5,7 @@ export const discourseEnvSchema = z.object({
     DISCOURSE_INSTANCE_URL: z
         .string()
         .min(1, "Discourse instance URL is required"),
+    DISCOURSE_POSTS_LIMIT: z.number().optional(),
 });
 
 export type DiscourseConfig = z.infer<typeof discourseEnvSchema>;
@@ -17,6 +18,9 @@ export async function validateDiscourseConfig(
             DISCOURSE_INSTANCE_URL:
                 runtime.getSetting("DISCOURSE_INSTANCE_URL") ||
                 process.env.DISCOURSE_INSTANCE_URL,
+            DISCOURSE_POSTS_LIMIT:
+                runtime.getSetting("DISCOURSE_POSTS_LIMIT") ||
+                process.env.DISCOURSE_POSTS_LIMIT,
         };
 
         return discourseEnvSchema.parse(config);
