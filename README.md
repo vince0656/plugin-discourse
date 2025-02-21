@@ -1,4 +1,4 @@
-# @vince0656/plugin-discourse
+# @vdecentralised/plugin-discourse
 
 Discourse plugin for Eliza OS that adds a provider which will fetch data from a target Discourse instance, such as posts. Discourse is used widely in the web3 DAO and governance community. Giving agents access to a DAO's Discourse data will enhance collaboration and decision-making within the DAO. Of course, this plugin is not limited to DAOs, it can be used outside of the web3 ecosystem.
 
@@ -11,11 +11,11 @@ This plugin provides functionality to:
 ## Installation
 
 ```bash
-npm install @vince0656/plugin-discourse
+npm install @vdecentralised/plugin-discourse
 # or
-yarn add @vince0656/plugin-discourse
+yarn add @vdecentralised/plugin-discourse
 # or
-pnpm add @vince0656/plugin-discourse
+pnpm add @vdecentralised/plugin-discourse
 ```
 
 ## Configuration
@@ -37,7 +37,7 @@ DISCOURSE_INSTANCE_URL=https://gov.uniswap.org
 Import and register the plugin in your Eliza configuration:
 
 ```typescript
-import { discoursePlugin } from "@vince0656/plugin-discourse";
+import { discoursePlugin } from "@vdecentralised/plugin-discourse";
 
 export default {
     plugins: [discoursePlugin],
@@ -96,4 +96,4 @@ For more information about Discourse capabilities:
 
 ## License
 
-This plugin is part of the Eliza project and inherits its MIT license. See the main project repository for license information.
+MIT

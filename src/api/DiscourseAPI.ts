@@ -1,7 +1,7 @@
 import axios, { type AxiosInstance } from "axios";
 import { Post } from "../types/Post";
 
-export class ReadOnlyDiscourseClient {
+export class DiscourseAPI {
     instance: AxiosInstance;
 
     constructor(instanceUrl: string) {
@@ -36,8 +36,24 @@ export class ReadOnlyDiscourseClient {
     }
 
     formatLatestPostsData(posts: Post[]): string {
+        if (!Array.isArray(posts)) {
+            throw new Error('Posts must be an array');
+        }
+
+        if (posts.length === 0) {
+            throw new Error('Posts array is empty');
+        }
+
         return posts
             .map((post) => {
+                if (!post || typeof post !== 'object') {
+                    throw new Error('Invalid post object');
+                }
+
+                if (!post.id || !post.created_at || !post.username || !post.raw) {
+                    throw new Error('Post is missing required fields');
+                }
+
                 return `Post ID: ${post.id}\nCreated At: ${post.created_at}\nUsername: ${post.username}\nRaw: ${post.raw}\n\n`;
             })
             .join("");

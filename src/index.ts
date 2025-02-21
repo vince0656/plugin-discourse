@@ -1,5 +1,5 @@
 import type { Plugin } from "@elizaos/core";
-import { discoursePostsProvider } from "./providers/discoursePosts.ts";
+import { discoursePostsProvider } from "./providers/discoursePosts";
 
 export const discoursePlugin: Plugin = {
     name: "discourse",

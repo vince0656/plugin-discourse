@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
-import { ReadOnlyDiscourseClient } from "../client/ReadOnlyDiscourseClient";
+import { DiscourseAPI } from "../api/DiscourseAPI";
 
 describe("Posts from Discourse using Uniswap governance", () => {
 
-    let client: ReadOnlyDiscourseClient;
+    let client: DiscourseAPI;
 
     beforeEach(() => {
         vi.clearAllMocks();
-        client = new ReadOnlyDiscourseClient('https://gov.uniswap.org/');
+        client = new DiscourseAPI('https://gov.uniswap.org/');
     });
 
     afterEach(() => {
@@ -35,7 +35,7 @@ describe("Posts from Discourse using Uniswap governance", () => {
         })
 
         it("should throw an error for a bad url", async () => {
-            const badClient = new ReadOnlyDiscourseClient('https://govs.uniswap.org/');
+            const badClient = new DiscourseAPI('https://govs.uniswap.org/');
             await expect(badClient.getLatestPosts()).rejects.toThrow(
                 "getaddrinfo ENOTFOUND govs.uniswap.org"
             );

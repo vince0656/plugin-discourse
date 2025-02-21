@@ -1,5 +1,5 @@
 {
-    "name": "@vince0656/plugin-discourse",
+    "name": "@vdecentralised/plugin-discourse",
     "version": "0.0.1",
     "type": "module",
     "main": "dist/index.js",

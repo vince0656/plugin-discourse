@@ -1,7 +1,7 @@
 import type { IAgentRuntime, Memory, Provider, State } from "@elizaos/core";
 
 import { validateDiscourseConfig } from "../environment";
-import { ReadOnlyDiscourseClient } from "../client/ReadOnlyDiscourseClient";
+import { DiscourseAPI } from "../api/DiscourseAPI";
 
 // Provider that focuses on getting the latest posts from a Discourse instance and formatting them for the agent
 const discoursePostsProvider: Provider = {
@@ -13,7 +13,7 @@ const discoursePostsProvider: Provider = {
         try {
             // Extract and validate the Discourse configuration from the runtime context
             const config = await validateDiscourseConfig(runtime);
-            const client = new ReadOnlyDiscourseClient(config.DISCOURSE_INSTANCE_URL);
+            const client = new DiscourseAPI(config.DISCOURSE_INSTANCE_URL);
 
             // Make the API call to get the latest posts
             const posts = await client.getLatestPosts();
