@@ -1,6 +1,6 @@
 {
     "name": "@vdecentralised/plugin-discourse",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "type": "module",
     "main": "dist/index.js",
     "module": "dist/index.js",
@@ -32,5 +32,19 @@
     },
     "devDependencies": {
         "typescript": "^5.7.3"
+    },
+    "agentConfig": {
+        "pluginType": "elizaos:client:1.0.0",
+        "pluginParameters": {
+            "DISCOURSE_INSTANCE_URL": {
+                "type": "string",
+                "description": "The URL of the Discourse instance e.g. https://gov.uniswap.org"
+            },
+            "DISCOURSE_POSTS_LIMIT": {
+                "type": "number",
+                "optional": true,
+                "description": "The maximum number of posts to return from the Discourse instance to the LLM. Defaults to 5."
+            }
+        }
     }
 }
